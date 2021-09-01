@@ -1,0 +1,14 @@
+{
+  "name": "steamdb-getmostplaytime-review",
+  "version": "1.0.0",
+  "description": "This is a web service that searches for a steam review that has the most playtime.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Theo Clapperton",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
+}
