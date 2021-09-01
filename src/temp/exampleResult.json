@@ -1,0 +1,38 @@
+{
+    "success": 1,
+    "query_summary": {
+        "num_reviews": 1,
+        "review_score": 9,
+        "review_score_desc": "Overwhelmingly Positive",
+        "total_positive": 5633,
+        "total_negative": 92,
+        "total_reviews": 5725
+    },
+    "reviews": [
+        {
+            "recommendationid": "98074747",
+            "author": {
+                "steamid": "76561198013857498",
+                "num_games_owned": 144,
+                "num_reviews": 6,
+                "playtime_forever": 28,
+                "playtime_last_two_weeks": 15,
+                "playtime_at_review": 28, // This is the playtime at the time of the review in minutes,
+                "last_played": 1629694351
+            },
+            "language": "english",
+            "review": "PLEEEEASE add people live/walk in the town!!!And this game will be PERFECT!",
+            "timestamp_created": 1629693423,
+            "timestamp_updated": 1629817791,
+            "voted_up": true,
+            "votes_up": 1937,
+            "votes_funny": 21,
+            "weighted_vote_score": "0.967502236366271973",
+            "comment_count": 0,
+            "steam_purchase": true,
+            "received_for_free": false,
+            "written_during_early_access": true
+        }
+    ],
+    "cursor": "AoIIP3er63uHkPYC"
+}
