@@ -2,9 +2,9 @@
 const { getAppReviews } = require("./src/api/steamdb")
 
 const Main = async () => {
-    let cursor = "*"
+    let cursor = "*";
     let reviewNum = 0;
-    let numberOfRuns = 0
+    let numberOfRuns = 0;
     try {
 
         let empty = false
