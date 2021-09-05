@@ -1,29 +1,20 @@
-// import the function i just made
-const { getAppReviews } = require("./src/api/steamdb")
+const dotenv = require("dotenv").config(),
+  config = require("./src/config/config"),
+  express = require("./src/config/express"),
+  db = require("./src/config/db"),
+  version = config.get("version");
 
-const Main = async () => {
-    let cursor = "*";
-    let reviewNum = 0;
-    let numberOfRuns = 0;
-    try {
+const app = express();
 
-        let empty = false
-        while (!empty) {
-            numberOfRuns++;
-            console.log(`Run ${numberOfRuns}`)
-            const r = await getAppReviews(1291340, cursor);
-            if (r.reviews.length === 0) {
-                empty = true
-            } else {
-                reviewNum += r.reviews.length
-                cursor = r.cursor
-            }
-        }
-
-        console.log(`There are ${reviewNum} reviews`);
-    } catch (error) {
-        console.log(error);
-    }
-}
-
-Main();
+db.connect(function (err) {
+  if (err) {
+    console.log("Unable to connect to MongoDB");
+    process.exit(1);
+  } else {
+    const port = process.env.PORT || 3333;
+    app.listen(port, function () {
+      console.log(`API Ver: ${version}; Listening on port: ${port}`);
+      console.log(`Connect Via : http://localhost:${port}/api/${version}`);
+    });
+  }
+});
