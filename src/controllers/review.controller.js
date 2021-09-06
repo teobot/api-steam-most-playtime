@@ -31,7 +31,7 @@ const getReview = async (req, res) => {
     // Save the game to the database
     // await saveReviewToDatabase(game_id, reviewData);
     // try using without a await so that the information is send quicker back to the user
-    saveReviewToDatabase(game_id, reviewData);
+    await saveReviewToDatabase(game_id, reviewData);
 
     // Save the game to be updated in the database daily
     // await savedToBeUpdated(game_id);
