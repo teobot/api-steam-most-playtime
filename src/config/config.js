@@ -3,6 +3,12 @@ const convict = require("convict");
 const dotenv = require("dotenv").config();
 
 let config = convict({
+  api: {
+    url: {
+      format: String,
+      default: "https://store.steampowered.com/"
+    }
+  },
   jwt_secret: {
     format: String,
     default: "The secret used to sign the JWT",
