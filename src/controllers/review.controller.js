@@ -1,6 +1,13 @@
 // Require config
 const config = require("../config/config");
 
+// Import mongoose
+const mongoose = require("mongoose");
+
+// Require mongoose schema
+const Review = mongoose.model("Review");
+
+// controller imports
 const { searchDatabaseForGame } = require("../controllers/search.controller");
 const {
   savedToBeUpdated,
@@ -21,7 +28,7 @@ const getReview = async (req, res) => {
     // Game IS saved in the database
 
     // Return the review to the user
-    return res.send({ review: databaseSearch.review });
+    return res.send(databaseSearch.review);
   } else {
     // Game IS NOT saved in the database
 
@@ -31,20 +38,14 @@ const getReview = async (req, res) => {
     // Save the game to the database
     // await saveReviewToDatabase(game_id, reviewData);
     // try using without a await so that the information is send quicker back to the user
-    await saveReviewToDatabase(game_id, reviewData);
+    const database_data = await saveReviewToDatabase(game_id, reviewData);
 
     // Save the game to be updated in the database daily
     // await savedToBeUpdated(game_id);
     // this is remove for now, think about when the information should load
 
     // Return the game review back to the user
-    return res.send({
-      review: {
-        gameId: game_id,
-        review: reviewData.hightestPlayTimeReview,
-        time_taken: reviewData.time_taken,
-      },
-    });
+    return res.send(database_data.review);
   }
 };
 
