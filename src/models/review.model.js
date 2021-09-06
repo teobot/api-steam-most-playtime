@@ -5,10 +5,20 @@ const reviewSchema = new mongoose.Schema({
   review: {
     type: Object,
   },
-  time_taken: Number,
-  created: Date,
+  time_taken: {
+    type: Number,
+    default: null,
+  },
+  created: {
+    type: Date,
+    default: new Date(),
+  },
   updated: {
     type: Date,
+    default: new Date(),
+  },
+  number_of_reviews: {
+    type: Number,
     default: null,
   },
 });
