@@ -1,12 +1,24 @@
+# Connecting
+Connecting to the api using
+> http://localhost:3333/api/v1
+
 # Resources
 ## Libraries
 - Axios
-  - web calls
   - https://www.npmjs.com/package/axios
+- Config
+  - https://www.npmjs.com/package/config
+- JWT
+  - https://www.npmjs.com/package/jsonwebtoken
+- Express
+  - https://www.npmjs.com/package/express
+- MongoDB
+  - https://www.npmjs.com/package/mongoose
 
 
-# Development
-## Adding a new route
+
+## Development
+### Adding a new route
 1. Create the routes file using the boilerplate code below in the folder `./src/routes`.
 ```javascript
 const config = require("../config/config");
