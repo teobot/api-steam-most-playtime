@@ -5,12 +5,12 @@ const { getSecondsBetweenDates } = require("../functions/general.functions");
 
 const config = require("../config/config");
 
-
 const steamDB = axios.create({
   baseURL: config.get("api.url"),
 });
 
 const getAppReviews = async (id, cursor) => {
+  // docs -> https://partner.steamgames.com/doc/store/getreviews
   try {
     const req = await steamDB.request({
       url: `/appreviews/${id}`,
@@ -34,6 +34,18 @@ const getAppReviews = async (id, cursor) => {
   }
 };
 
+const getGameInfo = async (id) => {
+  // this returns the game info from the given id.
+  try {
+    const game_res = await axios.get(
+      `https://store.steampowered.com/api/appdetails?appids=${id}&language=english`
+    );
+    return { success: true, data: game_res.data };
+  } catch (error) {
+    return { success: false, data: error.message };
+  }
+};
+
 // this function returns a list for all the steam games, can be used to get the appid
 // const getAllSteamGames = async () => {
 //   let start = new Date();
@@ -51,4 +63,5 @@ const getAppReviews = async (id, cursor) => {
 // export the getAppReviews function
 module.exports = {
   getAppReviews,
+  getGameInfo,
 };
