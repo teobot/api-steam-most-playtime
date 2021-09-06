@@ -28,11 +28,12 @@ const saveReviewToDatabase = async (id, reviewData) => {
       review: reviewData.hightestPlayTimeReview,
       time_taken: reviewData.time_taken,
       created: new Date(),
+      updated: new Date(),
     });
     await review.save();
     return { success: true, id, review: reviewData.hightestPlayTimeReview };
   } catch (error) {
-    return { success: false, id, error, reviewData: null };
+    return { success: false, id, message: error.message, reviewData: null };
   }
 };
 
