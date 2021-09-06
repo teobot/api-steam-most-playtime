@@ -15,9 +15,9 @@ const getReviewFromGameId = async (id) => {
 const getAllGameReviews = async (id) => {
   let start_time = new Date();
   let cursor = "*";
-  let numberOfReviews = 0;
+  let number_of_reviews = 0;
   let numberOfRuns = 0;
-  let hightestPlayTimeReview = null;
+  let review = null;
   let empty = false;
   try {
     while (!empty) {
@@ -26,35 +26,35 @@ const getAllGameReviews = async (id) => {
       if (response.query_summary.num_reviews === 0) {
         empty = true;
       } else {
-        numberOfReviews += response.reviews.length;
+        number_of_reviews += response.reviews.length;
         cursor = response.cursor;
-        if (hightestPlayTimeReview === null) {
-          hightestPlayTimeReview = response.reviews[0];
+        if (review === null) {
+          review = response.reviews[0];
         }
         for (let i = 0; i < response.reviews.length; i++) {
-          const review = response.reviews[i];
+          const response_review = response.reviews[i];
           // Check the playtime here
           if (
-            hightestPlayTimeReview.author[REVIEW_PRIORITIZE] <
-            review.author[REVIEW_PRIORITIZE]
+            review.author[REVIEW_PRIORITIZE] <
+            response_review.author[REVIEW_PRIORITIZE]
           ) {
-            hightestPlayTimeReview = review;
+            review = response_review;
           }
         }
       }
     }
     return {
-      numberOfReviews,
+      number_of_reviews,
       numberOfRuns,
-      hightestPlayTimeReview,
+      review,
       time_taken: getSecondsBetweenDates(start_time, new Date()),
     };
   } catch (error) {
     console.log(error);
     return {
-      numberOfReviews,
+      number_of_reviews,
       numberOfRuns,
-      hightestPlayTimeReview,
+      review,
       time_taken: getSecondsBetweenDates(start_time, new Date()),
     };
   }
