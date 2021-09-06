@@ -15,8 +15,6 @@ Connecting to the api using
 - MongoDB
   - https://www.npmjs.com/package/mongoose
 
-
-
 ## Development
 ### Adding a new route
 1. Create the routes file using the boilerplate code below in the folder `./src/routes`.
@@ -55,3 +53,17 @@ module.exports = {
 ```javascript
 require("../routes/ROUTE_FILE")(app);
 ```
+### Creating a new mongoose schema
+1. Make the new model using the code below and save it inside `./src/models/` using convention `name.model.js`,
+```javascript
+const mongoose = require("mongoose");
+
+const SCHEMA_NAME = new mongoose.Schema({});
+
+mongoose.model(`MODEL_NAME`, SCHEMA_NAME);
+```
+2. Add the import inside `./src/config/db.js` at the top of the page, using the code `require("../models/name.model")`
+
+### Adding new value to model
+1. Add the key and value to the model located inside `./src/models/`,
+2. Go to `./src/controllers/database.controller.js` and add the new value to be saved to the database inside `saveReviewToDatabase`,
